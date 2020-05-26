@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `arm32v6` builds of [the `matomo` official image](https://hub.docker.com/_/matomo) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,9 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.13.5-apache`, `3.13-apache`, `3-apache`, `apache`, `3.13.5`, `3.13`, `3`, `latest`](https://github.com/matomo-org/docker/blob/5f0966ed08cf055472793309e070fd3caef5af2b/apache/Dockerfile)
--	[`3.13.5-fpm`, `3.13-fpm`, `3-fpm`, `fpm`](https://github.com/matomo-org/docker/blob/5f0966ed08cf055472793309e070fd3caef5af2b/fpm/Dockerfile)
 -	[`3.13.5-fpm-alpine`, `3.13-fpm-alpine`, `3-fpm-alpine`, `fpm-alpine`](https://github.com/matomo-org/docker/blob/5f0966ed08cf055472793309e070fd3caef5af2b/fpm-alpine/Dockerfile)
+
+[![arm32v6/matomo build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/matomo.svg?label=arm32v6/matomo%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/matomo/)
 
 # Quick reference (cont.)
 
@@ -121,13 +123,13 @@ This product includes GeoLite data created by MaxMind, available from [http://ww
 
 # Image Variants
 
-The `matomo` images come in many flavors, each designed for a specific use case.
+The `arm32v6/matomo` images come in many flavors, each designed for a specific use case.
 
-## `matomo:<version>`
+## `arm32v6/matomo:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `matomo:<version>-alpine`
+## `arm32v6/matomo:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

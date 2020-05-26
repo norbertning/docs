@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `arm32v6` builds of [the `postfixadmin` official image](https://hub.docker.com/_/postfixadmin) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,9 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.2.4-apache`, `3.2-apache`, `3-apache`, `apache`, `3.2.4`, `3.2`, `3`, `latest`](https://github.com/postfixadmin/docker/blob/b1ffcf48cd23b4ba779dc5c1a8c6f78c6ef45077/apache/Dockerfile)
--	[`3.2.4-fpm`, `3.2-fpm`, `3-fpm`, `fpm`](https://github.com/postfixadmin/docker/blob/b1ffcf48cd23b4ba779dc5c1a8c6f78c6ef45077/fpm/Dockerfile)
 -	[`3.2.4-fpm-alpine`, `3.2-fpm-alpine`, `3-fpm-alpine`, `fpm-alpine`](https://github.com/postfixadmin/docker/blob/b1ffcf48cd23b4ba779dc5c1a8c6f78c6ef45077/fpm-alpine/Dockerfile)
+
+[![arm32v6/postfixadmin build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/postfixadmin.svg?label=arm32v6/postfixadmin%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/postfixadmin/)
 
 # Quick reference (cont.)
 
@@ -66,7 +68,7 @@ $ docker run -e POSTFIXADMIN_DB_TYPE=mysqli \
            -e POSTFIXADMIN_DB_PASSWORD=topsecret \
            -e POSTFIXADMIN_DB_NAME=postfixadmin \
            --name some-postfixadmin \
-        postfixadmin
+        arm32v6/postfixadmin
 ```
 
 `POSTFIXADMIN_DB_TYPE` can be one of :
@@ -89,7 +91,7 @@ $ docker run -e POSTFIXADMIN_DB_TYPE=mysqli \
            -e POSTFIXADMIN_DB_NAME=postfixadmin \
            --name some-postfixadmin \
            -p 8080:80
-        postfixadmin
+        arm32v6/postfixadmin
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -98,7 +100,7 @@ Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browse
 
 ```console
 $ docker run --name some-postfixadmin -p 8080:80 %%image%%
-$ docker run --name some-postfixadmin -v /local/path/to/config.local.php:/var/www/html/config.local.php -p 8080:80 postfixadmin
+$ docker run --name some-postfixadmin -v /local/path/to/config.local.php:/var/www/html/config.local.php -p 8080:80 arm32v6/postfixadmin
 ```
 
 ## Image Variants
@@ -155,13 +157,13 @@ Run docker stack deploy -c stack.yml postfixadmin (or docker-compose -f stack.ym
 
 # Image Variants
 
-The `postfixadmin` images come in many flavors, each designed for a specific use case.
+The `arm32v6/postfixadmin` images come in many flavors, each designed for a specific use case.
 
-## `postfixadmin:<version>`
+## `arm32v6/postfixadmin:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `postfixadmin:<version>-alpine`
+## `arm32v6/postfixadmin:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
