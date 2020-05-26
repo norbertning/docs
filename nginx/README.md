@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `windows-amd64` builds of [the `nginx` official image](https://hub.docker.com/_/nginx) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,14 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.17.10`, `mainline`, `1`, `1.17`, `latest`](https://github.com/nginxinc/docker-nginx/blob/594ce7a8bc26c85af88495ac94d5cd0096b306f7/mainline/buster/Dockerfile)
--	[`1.17.10-perl`, `mainline-perl`, `1-perl`, `1.17-perl`, `perl`](https://github.com/nginxinc/docker-nginx/blob/594ce7a8bc26c85af88495ac94d5cd0096b306f7/mainline/buster-perl/Dockerfile)
--	[`1.17.10-alpine`, `mainline-alpine`, `1-alpine`, `1.17-alpine`, `alpine`](https://github.com/nginxinc/docker-nginx/blob/594ce7a8bc26c85af88495ac94d5cd0096b306f7/mainline/alpine/Dockerfile)
--	[`1.17.10-alpine-perl`, `mainline-alpine-perl`, `1-alpine-perl`, `1.17-alpine-perl`, `alpine-perl`](https://github.com/nginxinc/docker-nginx/blob/594ce7a8bc26c85af88495ac94d5cd0096b306f7/mainline/alpine-perl/Dockerfile)
--	[`1.18.0`, `stable`, `1.18`](https://github.com/nginxinc/docker-nginx/blob/70e44865208627c5ada57242b46920205603c096/stable/buster/Dockerfile)
--	[`1.18.0-perl`, `stable-perl`, `1.18-perl`](https://github.com/nginxinc/docker-nginx/blob/70e44865208627c5ada57242b46920205603c096/stable/buster-perl/Dockerfile)
--	[`1.18.0-alpine`, `stable-alpine`, `1.18-alpine`](https://github.com/nginxinc/docker-nginx/blob/70e44865208627c5ada57242b46920205603c096/stable/alpine/Dockerfile)
--	[`1.18.0-alpine-perl`, `stable-alpine-perl`, `1.18-alpine-perl`](https://github.com/nginxinc/docker-nginx/blob/70e44865208627c5ada57242b46920205603c096/stable/alpine-perl/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/nginx build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/nginx.svg?label=winamd64/nginx%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/nginx/)
 
 # Quick reference (cont.)
 
@@ -65,13 +62,13 @@ Nginx (pronounced "engine-x") is an open source reverse proxy server for HTTP, H
 ## Hosting some simple static content
 
 ```console
-$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d nginx
+$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d winamd64/nginx
 ```
 
 Alternatively, a simple `Dockerfile` can be used to generate a new image that includes the necessary content (which is a much cleaner solution than the bind mount above):
 
 ```dockerfile
-FROM nginx
+FROM winamd64/nginx
 COPY static-html-directory /usr/share/nginx/html
 ```
 
@@ -92,7 +89,7 @@ Then you can hit `http://localhost:8080` or `http://host-ip:8080` in your browse
 ## Complex configuration
 
 ```console
-$ docker run --name my-custom-nginx-container -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx
+$ docker run --name my-custom-nginx-container -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d winamd64/nginx
 ```
 
 For information on the syntax of the nginx configuration files, see [the official documentation](http://nginx.org/en/docs/) (specifically the [Beginner's Guide](http://nginx.org/en/docs/beginners_guide.html#conf_structure)).
@@ -100,7 +97,7 @@ For information on the syntax of the nginx configuration files, see [the officia
 If you wish to adapt the default configuration, use something like the following to copy it from a running nginx container:
 
 ```console
-$ docker run --name tmp-nginx-container -d nginx
+$ docker run --name tmp-nginx-container -d winamd64/nginx
 $ docker cp tmp-nginx-container:/etc/nginx/nginx.conf /host/path/nginx.conf
 $ docker rm -f tmp-nginx-container
 ```
@@ -108,7 +105,7 @@ $ docker rm -f tmp-nginx-container
 This can also be accomplished more cleanly using a simple `Dockerfile` (in `/host/path/`):
 
 ```dockerfile
-FROM nginx
+FROM winamd64/nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 ```
 
@@ -120,15 +117,15 @@ Then build the image with `docker build -t custom-nginx .` and run it as follows
 $ docker run --name my-custom-nginx-container -d custom-nginx
 ```
 
-### Using environment variables in nginx configuration
+### Using environment variables in winamd64/nginx configuration
 
-Out-of-the-box, nginx doesn't support environment variables inside most configuration blocks. But `envsubst` may be used as a workaround if you need to generate your nginx configuration dynamically before nginx starts.
+Out-of-the-box, winamd64/nginx doesn't support environment variables inside most configuration blocks. But `envsubst` may be used as a workaround if you need to generate your winamd64/nginx configuration dynamically before winamd64/nginx starts.
 
 Here is an example using docker-compose.yml:
 
 ```yaml
 web:
-  image: nginx
+  image: winamd64/nginx
   volumes:
    - ./mysite.template:/etc/nginx/conf.d/mysite.template
   ports:
@@ -144,29 +141,29 @@ The `mysite.template` file may then contain variable references like this:
 `listen       ${NGINX_PORT};
 `
 
-## Running nginx in read-only mode
+## Running winamd64/nginx in read-only mode
 
-To run nginx in read-only mode, you will need to mount a Docker volume to every location where nginx writes information. The default nginx configuration requires write access to `/var/cache` and `/var/run`. This can be easily accomplished by running nginx as follows:
+To run winamd64/nginx in read-only mode, you will need to mount a Docker volume to every location where winamd64/nginx writes information. The default winamd64/nginx configuration requires write access to `/var/cache` and `/var/run`. This can be easily accomplished by running winamd64/nginx as follows:
 
 ```console
 $ docker run -d -p 80:80 --read-only -v $(pwd)/nginx-cache:/var/cache/nginx -v $(pwd)/nginx-pid:/var/run nginx
 ```
 
-If you have a more advanced configuration that requires nginx to write to other locations, simply add more volume mounts to those locations.
+If you have a more advanced configuration that requires winamd64/nginx to write to other locations, simply add more volume mounts to those locations.
 
 ## Running nginx in debug mode
 
 Images since version 1.9.8 come with `nginx-debug` binary that produces verbose output when using higher log levels. It can be used with simple CMD substitution:
 
 ```console
-$ docker run --name my-nginx -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx nginx-debug -g 'daemon off;'
+$ docker run --name my-nginx -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d winamd64/nginx nginx-debug -g 'daemon off;'
 ```
 
 Similar configuration in docker-compose.yml may look like this:
 
 ```yaml
 web:
-  image: nginx
+  image: winamd64/nginx
   volumes:
     - ./nginx.conf:/etc/nginx/nginx.conf:ro
   command: [nginx-debug, '-g', 'daemon off;']
@@ -181,12 +178,12 @@ $ id
 uid=101(nginx) gid=101(nginx) groups=101(nginx)
 ```
 
-## Running nginx as a non-root user
+## Running winamd64/nginx as a non-root user
 
-It is possible to run the image as a less privileged arbitrary UID/GID. This, however, requires modification of nginx configuration to use directories writeable by that specific UID/GID pair:
+It is possible to run the image as a less privileged arbitrary UID/GID. This, however, requires modification of winamd64/nginx configuration to use directories writeable by that specific UID/GID pair:
 
 ```console
-$ docker run -d -v $PWD/nginx.conf:/etc/nginx/nginx.conf nginx
+$ docker run -d -v $PWD/nginx.conf:/etc/nginx/nginx.conf winamd64/nginx
 ```
 
 where nginx.conf in the current directory should have the following directives re-defined:
@@ -217,22 +214,6 @@ With Amplify it is possible to collect and aggregate metrics across containers, 
 In order to use Amplify, a small Python-based agent software (Amplify Agent) should be [installed](https://github.com/nginxinc/docker-nginx-amplify) inside the container.
 
 For more information about Amplify, please check the official documentation [here](https://github.com/nginxinc/nginx-amplify-doc).
-
-# Image Variants
-
-The `nginx` images come in many flavors, each designed for a specific use case.
-
-## `nginx:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `nginx:<version>-alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 

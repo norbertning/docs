@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `windows-amd64` builds of [the `jetty` official image](https://hub.docker.com/_/jetty) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,13 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`9.4.27-jre11-slim`, `9.4-jre11-slim`, `9-jre11-slim`](https://github.com/appropriate/docker-jetty/blob/89dfeafc4a603611cf5135249acbe218b515439c/9.4-jre11-slim/Dockerfile)
--	[`9.4.27-jre11`, `9.4-jre11`, `9-jre11`](https://github.com/appropriate/docker-jetty/blob/89dfeafc4a603611cf5135249acbe218b515439c/9.4-jre11/Dockerfile)
--	[`9.4.27-jre8`, `9.4-jre8`, `9-jre8`](https://github.com/appropriate/docker-jetty/blob/89dfeafc4a603611cf5135249acbe218b515439c/9.4-jre8/Dockerfile)
--	[`9.4.27-jdk13-slim`, `9.4-jdk13-slim`, `9-jdk13-slim`](https://github.com/appropriate/docker-jetty/blob/89dfeafc4a603611cf5135249acbe218b515439c/9.4-jdk13-slim/Dockerfile)
--	[`9.4.27`, `9.4`, `9`, `9.4.27-jdk13`, `9.4-jdk13`, `9-jdk13`, `latest`, `jdk13`](https://github.com/appropriate/docker-jetty/blob/89dfeafc4a603611cf5135249acbe218b515439c/9.4-jdk13/Dockerfile)
--	[`9.3.28-jre8`, `9.3-jre8`](https://github.com/appropriate/docker-jetty/blob/28562cbee783f1ccb94c375b7e9165c6cfe6d2e2/9.3-jre8/Dockerfile)
--	[`9.2.29-jre8`, `9.2-jre8`](https://github.com/appropriate/docker-jetty/blob/28562cbee783f1ccb94c375b7e9165c6cfe6d2e2/9.2-jre8/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/jetty build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/jetty.svg?label=winamd64/jetty%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/jetty/)
 
 # Quick reference (cont.)
 
@@ -64,13 +62,13 @@ Jetty is a pure Java-based HTTP (Web) server and Java Servlet container. While W
 To run the default Jetty server in the background, use the following command:
 
 ```console
-$ docker run -d jetty
+$ docker run -d winamd64/jetty
 ```
 
 You can test it by visiting `http://container-ip:8080` or `https://container-ip:8443/` in a browser. To expose your Jetty server to outside requests, use a port mapping as follows:
 
 ```console
-$ docker run -d -p 80:8080 -p 443:8443 jetty
+$ docker run -d -p 80:8080 -p 443:8443 winamd64/jetty
 ```
 
 This will map port 8080 inside the container as port 80 on the host and container port 8443 as host port 443. You can then go to `http://host-ip` or `https://host-ip` in a browser.
@@ -94,19 +92,19 @@ For older EOL'd images based on Jetty 7 or Jetty 8, please follow the [legacy in
 The configuration of the Jetty server can be reported by running with the `--list-config` option:
 
 ```console
-$ docker run -d jetty --list-config
+$ docker run -d winamd64/jetty --list-config
 ```
 
 Configuration such as parameters and additional modules may also be passed in via the command line. For example:
 
 ```console
-$ docker run -d jetty --module=jmx jetty.threadPool.maxThreads=500
+$ docker run -d winamd64/jetty --module=jmx jetty.threadPool.maxThreads=500
 ```
 
 To update the server configuration in a derived Docker image, the `Dockerfile` may enable additional modules with `RUN` commands like:
 
 ```Dockerfile
-FROM jetty
+FROM winamd64/jetty
 
 RUN java -jar "$JETTY_HOME/start.jar" --add-to-startd=jmx,stats
 ```
@@ -118,15 +116,15 @@ Modules may be configured in a `Dockerfile` by editing the properties in the cor
 JVM options can be set by passing the `JAVA_OPTIONS` environment variable to the container. For example, to set the maximum heap size to 1 gigabyte, you can run the container as follows:
 
 ```console
-$ docker run -e JAVA_OPTIONS="-Xmx1g" -d jetty
+$ docker run -e JAVA_OPTIONS="-Xmx1g" -d winamd64/jetty
 ```
 
 ## Read-only container
 
-To run `jetty` as a read-only container, have Docker create the `/tmp/jetty` and `/run/jetty` directories as volumes:
+To run `winamd64/jetty` as a read-only container, have Docker create the `/tmp/jetty` and `/run/jetty` directories as volumes:
 
 ```console
-$ docker run -d --read-only -v /tmp/jetty -v /run/jetty jetty
+$ docker run -d --read-only -v /tmp/jetty -v /run/jetty winamd64/jetty
 ```
 
 Since the container is read-only, you'll need to either mount in your webapps directory with `-v /path/to/my/webapps:/var/lib/jetty/webapps` or by populating `/var/lib/jetty/webapps` in a derived image.
@@ -136,7 +134,7 @@ Since the container is read-only, you'll need to either mount in your webapps di
 Starting with version 9.3, Jetty comes with built-in support for HTTP/2. However, due to potential license compatiblity issues with the ALPN library used to implement HTTP/2, the module is not enabled by default. In order to enable HTTP/2 support in a derived `Dockerfile` for private use, you can add a `RUN` command that enables the `http2` module and approve its license as follows:
 
 ```Dockerfile
-FROM jetty
+FROM winamd64/jetty
 
 RUN java -jar $JETTY_HOME/start.jar --add-to-startd=http2 --approve-all-licenses
 ```
@@ -152,20 +150,8 @@ By default, this image starts as user `root` and uses Jetty's `setuid` module to
 If you would like the image to start immediately as user `jetty` instead of starting as `root`, you can start the container with `-u jetty`:
 
 ```console
-$ docker run -d -u jetty jetty
+$ docker run -d -u jetty winamd64/jetty
 ```
-
-# Image Variants
-
-The `jetty` images come in many flavors, each designed for a specific use case.
-
-## `jetty:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `jetty:<version>-slim`
-
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `jetty`. Unless you are working in an environment where *only* the `jetty` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
 # License
 

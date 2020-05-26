@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `windows-amd64` builds of [the `haproxy` official image](https://hub.docker.com/_/haproxy) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,20 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`2.2-dev7`, `2.2-rc`](https://github.com/docker-library/haproxy/blob/e5884936dca8ee8968522abff21713042983a898/2.2-rc/Dockerfile)
--	[`2.2-dev7-alpine`, `2.2-rc-alpine`](https://github.com/docker-library/haproxy/blob/e5884936dca8ee8968522abff21713042983a898/2.2-rc/alpine/Dockerfile)
--	[`2.1.4`, `2.1`, `latest`](https://github.com/docker-library/haproxy/blob/eeaaa570ccaeec6fa7e545b9314d6f246b6b283c/2.1/Dockerfile)
--	[`2.1.4-alpine`, `2.1-alpine`, `alpine`](https://github.com/docker-library/haproxy/blob/bfa23c19cffdb4247474b2138feeeb14f48b7fe4/2.1/alpine/Dockerfile)
--	[`2.0.14`, `2.0`, `lts`](https://github.com/docker-library/haproxy/blob/eeaaa570ccaeec6fa7e545b9314d6f246b6b283c/2.0/Dockerfile)
--	[`2.0.14-alpine`, `2.0-alpine`, `lts-alpine`](https://github.com/docker-library/haproxy/blob/bfa23c19cffdb4247474b2138feeeb14f48b7fe4/2.0/alpine/Dockerfile)
--	[`1.9.15`, `1.9`, `1`](https://github.com/docker-library/haproxy/blob/eeaaa570ccaeec6fa7e545b9314d6f246b6b283c/1.9/Dockerfile)
--	[`1.9.15-alpine`, `1.9-alpine`, `1-alpine`](https://github.com/docker-library/haproxy/blob/bfa23c19cffdb4247474b2138feeeb14f48b7fe4/1.9/alpine/Dockerfile)
--	[`1.8.25`, `1.8`](https://github.com/docker-library/haproxy/blob/eeaaa570ccaeec6fa7e545b9314d6f246b6b283c/1.8/Dockerfile)
--	[`1.8.25-alpine`, `1.8-alpine`](https://github.com/docker-library/haproxy/blob/bfa23c19cffdb4247474b2138feeeb14f48b7fe4/1.8/alpine/Dockerfile)
--	[`1.7.12`, `1.7`](https://github.com/docker-library/haproxy/blob/14431e31ab981456585021f7dca35626c5e060c1/1.7/Dockerfile)
--	[`1.7.12-alpine`, `1.7-alpine`](https://github.com/docker-library/haproxy/blob/bfa23c19cffdb4247474b2138feeeb14f48b7fe4/1.7/alpine/Dockerfile)
--	[`1.6.15`, `1.6`](https://github.com/docker-library/haproxy/blob/4e917ff7cbc629b29af59d02057ceece8102e4e0/1.6/Dockerfile)
--	[`1.6.15-alpine`, `1.6-alpine`](https://github.com/docker-library/haproxy/blob/bfa23c19cffdb4247474b2138feeeb14f48b7fe4/1.6/alpine/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/haproxy build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/haproxy.svg?label=winamd64/haproxy%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/haproxy/)
 
 # Quick reference (cont.)
 
@@ -77,7 +68,7 @@ It is also worth checking out the [`examples/` directory from upstream](http://g
 ## Create a `Dockerfile`
 
 ```dockerfile
-FROM haproxy:1.7
+FROM winamd64/haproxy:1.7
 COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
 ```
 
@@ -104,7 +95,7 @@ You may need to publish the ports your HAProxy is listening on to the host by sp
 ## Directly via bind mount
 
 ```console
-$ docker run -d --name my-running-haproxy -v /path/to/etc/haproxy:/usr/local/etc/haproxy:ro haproxy:1.7
+$ docker run -d --name my-running-haproxy -v /path/to/etc/haproxy:/usr/local/etc/haproxy:ro winamd64/haproxy:1.7
 ```
 
 Note that your host's `/path/to/etc/haproxy` folder should be populated with a file named `haproxy.cfg`. If this configuration file refers to any other files within that folder then you should ensure that they also exist (e.g. template files such as `400.http`, `404.http`, and so forth). However, many minimal configurations do not require any supporting files.
@@ -118,22 +109,6 @@ $ docker kill -s HUP my-running-haproxy
 ```
 
 The entrypoint script in the image checks for running the command `haproxy` and replaces it with `haproxy-systemd-wrapper` from HAProxy upstream which takes care of signal handling to do the graceful reload. Under the hood this uses the `-sf` option of `haproxy` so "there are two small windows of a few milliseconds each where it is possible that a few connection failures will be noticed during high loads" (see [Stopping and restarting HAProxy](http://www.haproxy.org/download/1.7/doc/management.txt)).
-
-# Image Variants
-
-The `haproxy` images come in many flavors, each designed for a specific use case.
-
-## `haproxy:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `haproxy:<version>-alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 
