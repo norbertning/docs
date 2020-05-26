@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `i386` builds of [the `ros` official image](https://hub.docker.com/_/ros) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,22 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`kinetic-ros-core`, `kinetic-ros-core-xenial`](https://github.com/osrf/docker_images/blob/b075c7dbe56055d862f331f19e1e74ba653e181a/ros/kinetic/ubuntu/xenial/ros-core/Dockerfile)
--	[`kinetic-ros-base`, `kinetic-ros-base-xenial`, `kinetic`](https://github.com/osrf/docker_images/blob/f2b13092747c0f60cf7608369b57ea89bc01e22d/ros/kinetic/ubuntu/xenial/ros-base/Dockerfile)
--	[`kinetic-robot`, `kinetic-robot-xenial`](https://github.com/osrf/docker_images/blob/f2b13092747c0f60cf7608369b57ea89bc01e22d/ros/kinetic/ubuntu/xenial/robot/Dockerfile)
--	[`kinetic-perception`, `kinetic-perception-xenial`](https://github.com/osrf/docker_images/blob/f2b13092747c0f60cf7608369b57ea89bc01e22d/ros/kinetic/ubuntu/xenial/perception/Dockerfile)
--	[`melodic-ros-core`, `melodic-ros-core-bionic`](https://github.com/osrf/docker_images/blob/b075c7dbe56055d862f331f19e1e74ba653e181a/ros/melodic/ubuntu/bionic/ros-core/Dockerfile)
--	[`melodic-ros-base`, `melodic-ros-base-bionic`, `melodic`, `latest`](https://github.com/osrf/docker_images/blob/c1585532a5e6ddc4c3ded239a1caff366c34117f/ros/melodic/ubuntu/bionic/ros-base/Dockerfile)
--	[`melodic-robot`, `melodic-robot-bionic`](https://github.com/osrf/docker_images/blob/c1585532a5e6ddc4c3ded239a1caff366c34117f/ros/melodic/ubuntu/bionic/robot/Dockerfile)
--	[`melodic-perception`, `melodic-perception-bionic`](https://github.com/osrf/docker_images/blob/c1585532a5e6ddc4c3ded239a1caff366c34117f/ros/melodic/ubuntu/bionic/perception/Dockerfile)
--	[`melodic-ros-core-stretch`](https://github.com/osrf/docker_images/blob/b075c7dbe56055d862f331f19e1e74ba653e181a/ros/melodic/debian/stretch/ros-core/Dockerfile)
--	[`melodic-ros-base-stretch`](https://github.com/osrf/docker_images/blob/c1585532a5e6ddc4c3ded239a1caff366c34117f/ros/melodic/debian/stretch/ros-base/Dockerfile)
--	[`melodic-robot-stretch`](https://github.com/osrf/docker_images/blob/c1585532a5e6ddc4c3ded239a1caff366c34117f/ros/melodic/debian/stretch/robot/Dockerfile)
--	[`melodic-perception-stretch`](https://github.com/osrf/docker_images/blob/c1585532a5e6ddc4c3ded239a1caff366c34117f/ros/melodic/debian/stretch/perception/Dockerfile)
--	[`dashing-ros-core`, `dashing-ros-core-bionic`](https://github.com/osrf/docker_images/blob/b075c7dbe56055d862f331f19e1e74ba653e181a/ros/dashing/ubuntu/bionic/ros-core/Dockerfile)
--	[`dashing-ros-base`, `dashing-ros-base-bionic`, `dashing`](https://github.com/osrf/docker_images/blob/d188a5a15dba3d3fa266e4578c1ed2e1b4421c72/ros/dashing/ubuntu/bionic/ros-base/Dockerfile)
--	[`eloquent-ros-core`, `eloquent-ros-core-bionic`](https://github.com/osrf/docker_images/blob/b075c7dbe56055d862f331f19e1e74ba653e181a/ros/eloquent/ubuntu/bionic/ros-core/Dockerfile)
--	[`eloquent-ros-base`, `eloquent-ros-base-bionic`, `eloquent`](https://github.com/osrf/docker_images/blob/9b63c2f2a11ef18c93f7c8f35770625fc48181d8/ros/eloquent/ubuntu/bionic/ros-base/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `i386` ARCHITECTURE
+
+[![i386/ros build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/ros.svg?label=i386/ros%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/ros/)
 
 # Quick reference (cont.)
 
@@ -73,7 +62,7 @@ The Robot Operating System (ROS) is a set of software libraries and tools that h
 ## Create a `Dockerfile` in your ROS app project
 
 ```dockerfile
-FROM ros:indigo
+FROM i386/ros:indigo
 # place here your application's setup specifics
 CMD [ "roslaunch", "my-ros-app my-ros-app.launch" ]
 ```
@@ -111,7 +100,7 @@ ROS uses the `~/.ros/` directory for storing logs, and debugging info. If you wi
 For example, if one wishes to use their own `.ros` folder that already resides in their local home directory, with a username of `ubuntu`, we can simple launch the container with an additional volume argument:
 
 ```console
-$ docker run -v "/home/ubuntu/.ros/:/root/.ros/" ros
+$ docker run -v "/home/ubuntu/.ros/:/root/.ros/" i386/ros
 ```
 
 ### Devices
@@ -131,7 +120,7 @@ If we want our all ROS nodes to easily talk to each other, we'll can use a virtu
 > Build a ROS image that includes ROS tutorials using this `Dockerfile:`
 
 ```dockerfile
-FROM ros:indigo-ros-base
+FROM i386/ros:indigo-ros-base
 # install ros tutorials packages
 RUN apt-get update && apt-get install -y \
     ros-indigo-ros-tutorials \
@@ -142,7 +131,7 @@ RUN apt-get update && apt-get install -y \
 > Then to build the image from within the same directory:
 
 ```console
-$ docker build --tag ros:ros-tutorials .
+$ docker build --tag i386/ros:ros-tutorials .
 ```
 
 #### Create network
@@ -161,7 +150,7 @@ $ docker build --tag ros:ros-tutorials .
 $ docker run -it --rm \
     --net foo \
     --name master \
-    ros:ros-tutorials \
+    i386/ros:ros-tutorials \
     roscore
 ```
 
@@ -173,7 +162,7 @@ $ docker run -it --rm \
     --name talker \
     --env ROS_HOSTNAME=talker \
     --env ROS_MASTER_URI=http://master:11311 \
-    ros:ros-tutorials \
+    i386/ros:ros-tutorials \
     rosrun roscpp_tutorials talker
 ```
 
@@ -185,7 +174,7 @@ $ docker run -it --rm \
     --name listener \
     --env ROS_HOSTNAME=listener \
     --env ROS_MASTER_URI=http://master:11311 \
-    ros:ros-tutorials \
+    i386/ros:ros-tutorials \
     rosrun roscpp_tutorials listener
 ```
 

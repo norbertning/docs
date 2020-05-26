@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `i386` builds of [the `amazoncorretto` official image](https://hub.docker.com/_/amazoncorretto) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,8 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`8`, `8u252`, `8-al2-full`, `latest`](https://github.com/corretto/corretto-8-docker/blob/a1e2c7e4fb1d00430b76963020aa2861bba7658f/Dockerfile)
--	[`11`, `11.0.7`, `11-al2-full`](https://github.com/corretto/corretto-11-docker/blob/6ae94c922f550dfd3d9d08b04c10f6c114ee0e51/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `i386` ARCHITECTURE
+
+[![i386/amazoncorretto build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/amazoncorretto.svg?label=i386/amazoncorretto%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/amazoncorretto/)
 
 # Quick reference (cont.)
 
