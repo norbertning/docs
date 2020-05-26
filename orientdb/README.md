@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `ppc64le` builds of [the `orientdb` official image](https://hub.docker.com/_/orientdb) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,12 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.0.31`, `3.0`, `latest`](https://github.com/orientechnologies/orientdb-docker/blob/7893b07ad8f78b66f1c724244a88a70a05669e6e/release/3.0.x/3.0.31/Dockerfile)
--	[`3.0.31-tp3`, `3.0-tp3`](https://github.com/orientechnologies/orientdb-docker/blob/7893b07ad8f78b66f1c724244a88a70a05669e6e/release/3.0.x/3.0.31-tp3/Dockerfile)
--	[`2.2.37`, `2.2`](https://github.com/orientechnologies/orientdb-docker/blob/76586496ae5457689bebdf76ebd267a3be1aa954/release/2.2.x/2.2.37/Dockerfile)
--	[`2.2.37-spatial`](https://github.com/orientechnologies/orientdb-docker/blob/76586496ae5457689bebdf76ebd267a3be1aa954/release/2.2.x/2.2.37-spatial/Dockerfile)
--	[`2.1.25`, `2.1`](https://github.com/orientechnologies/orientdb-docker/blob/76586496ae5457689bebdf76ebd267a3be1aa954/release/2.1.x/Dockerfile)
--	[`2.0.18`, `2.0`](https://github.com/orientechnologies/orientdb-docker/blob/76586496ae5457689bebdf76ebd267a3be1aa954/release/2.0.x/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `ppc64le` ARCHITECTURE
+
+[![ppc64le/orientdb build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/orientdb.svg?label=ppc64le/orientdb%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/orientdb/)
 
 # Quick reference (cont.)
 
@@ -61,7 +60,7 @@ WARNING:
 When OrientDB starts it asks for the root password. The root user is able to manage the OrientDB server: create new databases, manage users and roles. The root password can be passed to the container using an environment property:
 
 ```console
-$ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 -e ORIENTDB_ROOT_PASSWORD=rootpwd orientdb
+$ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 -e ORIENTDB_ROOT_PASSWORD=rootpwd ppc64le/orientdb
 ```
 
 The [Studio](http://orientdb.com/docs/last/Studio-Home-page.html) is accessible to http://<docker-host>:2480 (e.g.: http://localhost:2480)
@@ -78,7 +77,7 @@ $ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 \
     -v <databases_path>:/orientdb/databases \
     -v <backup_path>:/orientdb/backup \
     -e ORIENTDB_ROOT_PASSWORD=rootpwd \
-    orientdb
+    ppc64le/orientdb
 ```
 
 **NOTE**: don't provide an **empty** config folder as volume, because OrientDB will startup with a very minimal configuration.
@@ -88,13 +87,13 @@ $ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 \
 The OrientDB image contains a full fledge installation, so it is possible to run the [console](http://orientdb.com/docs/last/Console-Commands.html)
 
 ```console
-$ docker run --rm -it orientdb /orientdb/bin/console.sh
+$ docker run --rm -it ppc64le/orientdb /orientdb/bin/console.sh
 ```
 
 or even the etl
 
 ```console
-$ docker run  --rm -it -v <config_path>:/orientdb/config orientdb /orientdb/bin/oetl.sh ../config/oetl-config.json
+$ docker run  --rm -it -v <config_path>:/orientdb/config ppc64le/orientdb /orientdb/bin/oetl.sh ../config/oetl-config.json
 ```
 
 ### Override configuration parameters
@@ -108,7 +107,7 @@ $ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 \
     -v <backup_path>:/orientdb/backup \
     -e ORIENTDB_ROOT_PASSWORD=rootpwd \
     -e ORIENTDB_NODE_NAME=odb1 \
-    orientdb /orientdb/bin/server.sh  -Ddistributed=true
+    ppc64le/orientdb /orientdb/bin/server.sh  -Ddistributed=true
 ```
 
 For further configuration options please refer to the [Configuration](http://orientdb.com/docs/last/Configuration.html) section of the online documentation.
@@ -120,7 +119,7 @@ Environment parameters such as heap size could be passed via command line:
 ```console
 $ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 \
     -e ORIENTDB_ROOT_PASSWORD=rootpwd \
-    orientdb /orientdb/bin/server.sh -Xmx8g
+    ppc64le/orientdb /orientdb/bin/server.sh -Xmx8g
 ```
 
 # License

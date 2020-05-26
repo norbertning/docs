@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `ppc64le` builds of [the `golang` official image](https://hub.docker.com/_/golang) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -31,37 +33,19 @@ WARNING:
 -	[`1.14.3-buster`, `1.14-buster`, `1-buster`, `buster`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/buster/Dockerfile)
 -	[`1.14.3-stretch`, `1.14-stretch`, `1-stretch`, `stretch`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/stretch/Dockerfile)
 -	[`1.14.3-alpine3.11`, `1.14-alpine3.11`, `1-alpine3.11`, `alpine3.11`, `1.14.3-alpine`, `1.14-alpine`, `1-alpine`, `alpine`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/alpine3.11/Dockerfile)
--	[`1.14.3-windowsservercore-ltsc2016`, `1.14-windowsservercore-ltsc2016`, `1-windowsservercore-ltsc2016`, `windowsservercore-ltsc2016`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/windows/windowsservercore-ltsc2016/Dockerfile)
--	[`1.14.3-windowsservercore-1809`, `1.14-windowsservercore-1809`, `1-windowsservercore-1809`, `windowsservercore-1809`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/windows/windowsservercore-1809/Dockerfile)
--	[`1.14.3-nanoserver-1809`, `1.14-nanoserver-1809`, `1-nanoserver-1809`, `nanoserver-1809`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/windows/nanoserver-1809/Dockerfile)
 -	[`1.13.11-buster`, `1.13-buster`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/buster/Dockerfile)
 -	[`1.13.11-stretch`, `1.13-stretch`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/stretch/Dockerfile)
 -	[`1.13.11-alpine3.11`, `1.13-alpine3.11`, `1.13.11-alpine`, `1.13-alpine`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/alpine3.11/Dockerfile)
 -	[`1.13.11-alpine3.10`, `1.13-alpine3.10`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/alpine3.10/Dockerfile)
--	[`1.13.11-windowsservercore-ltsc2016`, `1.13-windowsservercore-ltsc2016`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/windows/windowsservercore-ltsc2016/Dockerfile)
--	[`1.13.11-windowsservercore-1809`, `1.13-windowsservercore-1809`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/windows/windowsservercore-1809/Dockerfile)
--	[`1.13.11-nanoserver-1809`, `1.13-nanoserver-1809`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/windows/nanoserver-1809/Dockerfile)
 
 ## Shared Tags
 
 -	`1.14.3`, `1.14`, `1`, `latest`:
 	-	[`1.14.3-buster`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/buster/Dockerfile)
-	-	[`1.14.3-windowsservercore-ltsc2016`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/windows/windowsservercore-ltsc2016/Dockerfile)
-	-	[`1.14.3-windowsservercore-1809`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/windows/windowsservercore-1809/Dockerfile)
--	`1.14.3-windowsservercore`, `1.14-windowsservercore`, `1-windowsservercore`, `windowsservercore`:
-	-	[`1.14.3-windowsservercore-ltsc2016`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/windows/windowsservercore-ltsc2016/Dockerfile)
-	-	[`1.14.3-windowsservercore-1809`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/windows/windowsservercore-1809/Dockerfile)
--	`1.14.3-nanoserver`, `1.14-nanoserver`, `1-nanoserver`, `nanoserver`:
-	-	[`1.14.3-nanoserver-1809`](https://github.com/docker-library/golang/blob/d57a23e1c68ef0a393ef9c9267bddf0086959e3e/1.14/windows/nanoserver-1809/Dockerfile)
 -	`1.13.11`, `1.13`:
 	-	[`1.13.11-buster`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/buster/Dockerfile)
-	-	[`1.13.11-windowsservercore-ltsc2016`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/windows/windowsservercore-ltsc2016/Dockerfile)
-	-	[`1.13.11-windowsservercore-1809`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/windows/windowsservercore-1809/Dockerfile)
--	`1.13.11-windowsservercore`, `1.13-windowsservercore`:
-	-	[`1.13.11-windowsservercore-ltsc2016`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/windows/windowsservercore-ltsc2016/Dockerfile)
-	-	[`1.13.11-windowsservercore-1809`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/windows/windowsservercore-1809/Dockerfile)
--	`1.13.11-nanoserver`, `1.13-nanoserver`:
-	-	[`1.13.11-nanoserver-1809`](https://github.com/docker-library/golang/blob/fa9e58f43dbaa227cf05f1b0dc5504f73a50bf41/1.13/windows/nanoserver-1809/Dockerfile)
+
+[![ppc64le/golang build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/golang.svg?label=ppc64le/golang%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/golang/)
 
 # Quick reference (cont.)
 
@@ -97,7 +81,7 @@ Go (a.k.a., Golang) is a programming language first developed at Google. It is a
 The most straightforward way to use this image is to use a Go container as both the build and runtime environment. In your `Dockerfile`, writing something along the lines of the following will compile and run your project:
 
 ```dockerfile
-FROM golang:1.13
+FROM ppc64le/golang:1.13
 
 WORKDIR /go/src/app
 COPY . .
@@ -120,13 +104,13 @@ $ docker run -it --rm --name my-running-app my-golang-app
 There may be occasions where it is not appropriate to run your app inside a container. To compile, but not run your app inside the Docker instance, you can write something like:
 
 ```console
-$ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.13 go build -v
+$ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp ppc64le/golang:1.13 go build -v
 ```
 
 This will add your current directory as a volume to the container, set the working directory to the volume, and run the command `go build` which will tell go to compile the project in the working directory and output the executable to `myapp`. Alternatively, if you have a `Makefile`, you can run the `make` command inside your container.
 
 ```console
-$ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.13 make
+$ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp ppc64le/golang:1.13 make
 ```
 
 ## Cross-compile your app inside the Docker container
@@ -134,13 +118,13 @@ $ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.13 make
 If you need to compile your application for a platform other than `linux/amd64` (such as `windows/386`):
 
 ```console
-$ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp -e GOOS=windows -e GOARCH=386 golang:1.13 go build -v
+$ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp -e GOOS=windows -e GOARCH=386 ppc64le/golang:1.13 go build -v
 ```
 
 Alternatively, you can build for multiple platforms at once:
 
 ```console
-$ docker run --rm -it -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.13 bash
+$ docker run --rm -it -v "$PWD":/usr/src/myapp -w /usr/src/myapp ppc64le/golang:1.13 bash
 $ for GOOS in darwin linux; do
 >   for GOARCH in 386 amd64; do
 >     export GOOS GOARCH
@@ -151,30 +135,21 @@ $ for GOOS in darwin linux; do
 
 # Image Variants
 
-The `golang` images come in many flavors, each designed for a specific use case.
+The `ppc64le/golang` images come in many flavors, each designed for a specific use case.
 
-## `golang:<version>`
+## `ppc64le/golang:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
 Some of these tags may have names like buster or stretch in them. These are the suite code names for releases of [Debian](https://wiki.debian.org/DebianReleases) and indicate which release the image is based on. If your image needs to install any additional packages beyond what comes with the image, you'll likely want to specify one of these explicitly to minimize breakage when there are new releases of Debian.
 
-## `golang:<version>-alpine`
+## `ppc64le/golang:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
 This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
 
 To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
-
-## `golang:<version>-windowsservercore`
-
-This image is based on [Windows Server Core (`microsoft/windowsservercore`)](https://hub.docker.com/r/microsoft/windowsservercore/). As such, it only works in places which that image does, such as Windows 10 Professional/Enterprise (Anniversary Edition) or Windows Server 2016.
-
-For information about how to get Docker running on Windows, please see the relevant "Quick Start" guide provided by Microsoft:
-
--	[Windows Server Quick Start](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_server)
--	[Windows 10 Quick Start](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_10)
 
 # License
 
