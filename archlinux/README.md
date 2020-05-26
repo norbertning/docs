@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `s390x` builds of [the `archlinux` official image](https://hub.docker.com/_/archlinux) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,14 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`latest`, `20200505`](https://github.com/archlinux/archlinux-docker/blob/dd03495526350f45138b21be43f2a93c1649453a/Dockerfile)
--	[`20200407`](https://github.com/archlinux/archlinux-docker/blob/c136f3e502204c8d61fbfb48c2c64fa76c4f143c/Dockerfile)
--	[`20200306`](https://github.com/archlinux/archlinux-docker/blob/7cc3899f3be9e2da0bc3c03f82f0f570df9ce908/Dockerfile)
--	[`20200205`](https://github.com/archlinux/archlinux-docker/blob/38da0535b738f00ec3beeb18fef27758744b7f13/Dockerfile)
--	[`20200106`](https://github.com/archlinux/archlinux-docker/blob/5cda6709af009df0c1db0022629b45a2ddc9f717/Dockerfile)
--	[`20191205`](https://github.com/archlinux/archlinux-docker/blob/b285a662b4fb81b8614f8705d7ddd7681b8d530b/Dockerfile)
--	[`20191105`](https://github.com/archlinux/archlinux-docker/blob/15a9a3997aa8e571a8ce2a019b65b5eb698919ec/Dockerfile)
--	[`20191006`](https://github.com/archlinux/archlinux-docker/blob/ed18f615efd16f3a39b2c3eeed79a1f0c6a1dfca/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `s390x` ARCHITECTURE
+
+[![s390x/archlinux build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/archlinux.svg?label=s390x/archlinux%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/archlinux/)
 
 # Quick reference (cont.)
 
@@ -64,7 +61,7 @@ Our strong community is diverse and helpful, and we pride ourselves on the range
 
 # About this image
 
-The base filesystem tarball for this image is auto-generated in Arch Linux infrastructure at the beginning of each month. Given the rolling-release nature of Arch Linux, images are tagged with the timestamp of the date they were generated. For example, `archlinux:20191006` was generated the Sixth of October of 2019. The latest tag will contain the latest build always.
+The base filesystem tarball for this image is auto-generated in Arch Linux infrastructure at the beginning of each month. Given the rolling-release nature of Arch Linux, images are tagged with the timestamp of the date they were generated. For example, `s390x/archlinux:20191006` was generated the Sixth of October of 2019. The latest tag will contain the latest build always.
 
 This image is intended to serve the following goals:
 

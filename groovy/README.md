@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `s390x` builds of [the `groovy` official image](https://hub.docker.com/_/groovy) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -26,10 +28,11 @@ WARNING:
 
 -	[`3.0.4-jdk8`, `3.0-jdk8`, `3.0.4-jdk`, `3.0-jdk`, `jdk8`, `jdk`](https://github.com/groovy/docker-groovy/blob/6301e19926a4668ac470e4ce9b850e4b9380bfc3/jdk8/Dockerfile)
 -	[`3.0.4-jre8`, `3.0-jre8`, `3.0.4-jre`, `3.0-jre`, `3.0.4`, `3.0`, `jre8`, `jre`, `latest`](https://github.com/groovy/docker-groovy/blob/6301e19926a4668ac470e4ce9b850e4b9380bfc3/jre8/Dockerfile)
--	[`3.0.4-jdk11`, `3.0-jdk11`, `jdk11`](https://github.com/groovy/docker-groovy/blob/6301e19926a4668ac470e4ce9b850e4b9380bfc3/jdk11/Dockerfile)
 -	[`3.0.4-jre11`, `3.0-jre11`, `jre11`](https://github.com/groovy/docker-groovy/blob/6301e19926a4668ac470e4ce9b850e4b9380bfc3/jre11/Dockerfile)
 -	[`3.0.4-jdk14`, `3.0-jdk14`, `jdk14`](https://github.com/groovy/docker-groovy/blob/6301e19926a4668ac470e4ce9b850e4b9380bfc3/jdk14/Dockerfile)
 -	[`3.0.4-jre14`, `3.0-jre14`, `jre14`](https://github.com/groovy/docker-groovy/blob/6301e19926a4668ac470e4ce9b850e4b9380bfc3/jre14/Dockerfile)
+
+[![s390x/groovy build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/groovy.svg?label=s390x/groovy%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/groovy/)
 
 # Quick reference (cont.)
 
@@ -66,7 +69,7 @@ Note that if you are mounting a volume and the uid running Docker is not `1000`,
 
 ## Running a Groovy script
 
-`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts groovy groovy <script> <script-args>`
+`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts s390x/groovy groovy <script> <script-args>`
 
 ## Reusing the Grapes cache
 
@@ -74,7 +77,7 @@ The local Grapes cache can be reused across containers by creating a volume and 
 
 ```console
 docker volume create --name grapes-cache
-docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes groovy
+docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes s390x/groovy
 ```
 
 # License
