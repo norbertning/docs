@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `amd64` builds of [the `fedora` official image](https://hub.docker.com/_/fedora) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -32,6 +34,8 @@ WARNING:
 -	[`latest`, `31`](https://github.com/fedora-cloud/docker-brew-fedora/blob/dfd9c5c8cb3b98de83f697446ad5885df1476d73/x86_64/Dockerfile)
 -	[`32`](https://github.com/fedora-cloud/docker-brew-fedora/blob/d44f7abdc99edb550771c154ab81ce8f12e11172/x86_64/Dockerfile)
 -	[`rawhide`, `33`](https://github.com/fedora-cloud/docker-brew-fedora/blob/54c8f0cfa2dcedcd2165fecb101e9e4ba9c2c499/x86_64/Dockerfile)
+
+[![amd64/fedora build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/fedora.svg?label=amd64/fedora%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/fedora/)
 
 # Quick reference (cont.)
 
@@ -58,11 +62,11 @@ This image serves as the `official Fedora image` for the [Fedora Distribution](h
 
 ![logo](https://raw.githubusercontent.com/docker-library/docs/b449be7df57e9ed9086bb5821bfb5d6cdc5d67a4/fedora/logo.png)
 
-The `fedora:latest` tag will always point to the latest stable release.
+The `amd64/fedora:latest` tag will always point to the latest stable release.
 
 This image is a relatively small footprint in comparison to a standard Fedora installation. This image is generated in the [Fedora Build System](http://koji.fedoraproject.org/koji/) and is built from [this kickstart file](https://pagure.io/fedora-kickstarts/blob/master/f/fedora-container-base.ks).
 
-[Fedora Rawhide](https://fedoraproject.org/wiki/Releases/Rawhide) is available via `fedora:rawhide` and any specific version of Fedora as `fedora:$version` (example: `fedora:23`).
+[Fedora Rawhide](https://fedoraproject.org/wiki/Releases/Rawhide) is available via `amd64/fedora:rawhide` and any specific version of Fedora as `amd64/fedora:$version` (example: `amd64/fedora:23`).
 
 # License
 

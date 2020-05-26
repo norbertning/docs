@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `amd64` builds of [the `node` official image](https://hub.docker.com/_/node) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -53,6 +55,8 @@ WARNING:
 -	[`10.20.1-alpine3.10`, `10.20-alpine3.10`, `10-alpine3.10`, `dubnium-alpine3.10`](https://github.com/nodejs/docker-node/blob/d071b895dd1b8da6c566f45b971825fe5b087b21/10/alpine3.10/Dockerfile)
 -	[`10.20.1-alpine3.11`, `10.20-alpine3.11`, `10-alpine3.11`, `dubnium-alpine3.11`, `10.20.1-alpine`, `10.20-alpine`, `10-alpine`, `dubnium-alpine`](https://github.com/nodejs/docker-node/blob/d071b895dd1b8da6c566f45b971825fe5b087b21/10/alpine3.11/Dockerfile)
 
+[![amd64/node build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/node.svg?label=amd64/node%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/node/)
+
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
@@ -90,9 +94,9 @@ See [How To Use This Image](https://github.com/nodejs/docker-node/blob/master/RE
 
 # Image Variants
 
-The `node` images come in many flavors, each designed for a specific use case.
+The `amd64/node` images come in many flavors, each designed for a specific use case.
 
-## `node:<version>`
+## `amd64/node:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
@@ -100,11 +104,11 @@ Some of these tags may have names like buster, jessie, or stretch in them. These
 
 This tag is based off of [`buildpack-deps`](https://hub.docker.com/_/buildpack-deps/). `buildpack-deps` is designed for the average user of Docker who has many images on their system. It, by design, has a large number of extremely common Debian packages. This reduces the number of packages that images that derive from it need to install, thus reducing the overall size of all images on your system.
 
-## `node:<version>-slim`
+## `amd64/node:<version>-slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `node`. Unless you are working in an environment where *only* the `node` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `amd64/node`. Unless you are working in an environment where *only* the `amd64/node` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
-## `node:<version>-alpine`
+## `amd64/node:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

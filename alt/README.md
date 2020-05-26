@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `amd64` builds of [the `alt` official image](https://hub.docker.com/_/alt) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -27,6 +29,8 @@ WARNING:
 -	[`p9`, `latest`](https://github.com/alt-cloud/docker-brew-alt/blob/c3c1f444708cc0ce980ed2d13b877a4faf8ffe6e/x86_64/Dockerfile)
 -	[`p8`](https://github.com/alt-cloud/docker-brew-alt/blob/b7c6a1e701ad6454d2644f57bbb20e22a1db9c64/x86_64/Dockerfile)
 -	[`sisyphus`](https://github.com/alt-cloud/docker-brew-alt/blob/52b1dc24145fd5fd93cec6851ac91faea799cf94/x86_64/Dockerfile)
+
+[![amd64/alt build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/alt.svg?label=amd64/alt%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/alt/)
 
 # Quick reference (cont.)
 
@@ -71,7 +75,7 @@ As said above, Sisyphus is a frequently updated repository mainly designed for d
 
 # About this image
 
-The `alt:latest` tag will always point the latest stable release (which is, at the time of this writing, `alt:p9`).
+The `amd64/alt:latest` tag will always point the latest stable release (which is, at the time of this writing, `amd64/alt:p9`).
 
 ## How It's Made
 

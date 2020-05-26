@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `amd64` builds of [the `varnish` official image](https://hub.docker.com/_/varnish) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -26,6 +28,8 @@ WARNING:
 
 -	[`6.0`, `6.0.6-1`, `6.0.6`, `stable`](https://github.com/varnish/docker-varnish/blob/d32d16eb38cd161f0e626880cbd334da7d301027/stable/debian/Dockerfile)
 -	[`6.4`, `6.4.0-1`, `6.4.0`, `6`, `latest`, `fresh`](https://github.com/varnish/docker-varnish/blob/d32d16eb38cd161f0e626880cbd334da7d301027/fresh/debian/Dockerfile)
+
+[![amd64/varnish build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/varnish.svg?label=amd64/varnish%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/varnish/)
 
 # Quick reference (cont.)
 
@@ -71,13 +75,13 @@ backend default {
 Then run:
 
 ```console
-$ docker run --name my-running-varnish -v /path/to/default.vcl:/etc/varnish/default.vcl:ro --tmpfs /var/lib/varnish:exec -d varnish
+$ docker run --name my-running-varnish -v /path/to/default.vcl:/etc/varnish/default.vcl:ro --tmpfs /var/lib/varnish:exec -d amd64/varnish
 ```
 
 Alternatively, a simple `Dockerfile` can be used to generate a new image that includes the necessary `default.vcl` (which is a much cleaner solution than the bind mount above):
 
 ```dockerfile
-FROM varnish:6.2
+FROM amd64/varnish:6.2
 
 COPY default.vcl /etc/varnish/
 ```

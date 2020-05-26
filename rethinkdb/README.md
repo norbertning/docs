@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `amd64` builds of [the `rethinkdb` official image](https://hub.docker.com/_/rethinkdb) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -25,6 +27,8 @@ WARNING:
 # Supported tags and respective `Dockerfile` links
 
 -	[`2.4.0`, `2.4`, `2`, `latest`](https://github.com/rethinkdb/rethinkdb-dockerfiles/blob/54d3eebf6409b196264c193e0cbad027061739b3/bionic/2.4.0/Dockerfile)
+
+[![amd64/rethinkdb build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/rethinkdb.svg?label=amd64/rethinkdb%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/rethinkdb/)
 
 # Quick reference (cont.)
 
@@ -58,7 +62,7 @@ RethinkDB is an open-source, distributed database built to store JSON documents 
 The default CMD of the image is `rethinkdb --bind all`, so the RethinkDB daemon will bind to all network interfaces available to the container (by default, RethinkDB only accepts connections from `localhost`).
 
 ```bash
-docker run --name some-rethink -v "$PWD:/data" -d rethinkdb
+docker run --name some-rethink -v "$PWD:/data" -d amd64/rethinkdb
 ```
 
 ## Connect the instance to an application

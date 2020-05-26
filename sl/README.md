@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `amd64` builds of [the `sl` official image](https://hub.docker.com/_/sl) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -26,6 +28,8 @@ WARNING:
 
 -	[`7`, `latest`](https://github.com/scientificlinux/sl-docker/blob/88265b18997404f09ebbaec86bdfc87bca434963/sl7/Dockerfile)
 -	[`6`](https://github.com/scientificlinux/sl-docker/blob/b625310de0dbe2cd26e2bff681a9e012691d4b3e/sl6/Dockerfile)
+
+[![amd64/sl build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/sl.svg?label=amd64/sl%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/sl/)
 
 # Quick reference (cont.)
 
@@ -85,9 +89,9 @@ Recent Docker versions support the [overlayfs](https://docs.docker.com/engine/us
 You can try out the containers via:
 
 ```console
-$ docker pull sl
-$ docker run -it sl:6 cat /etc/redhat-release
-$ docker run -it sl:7 cat /etc/redhat-release
+$ docker pull amd64/sl
+$ docker run -it amd64/sl:6 cat /etc/redhat-release
+$ docker run -it amd64/sl:7 cat /etc/redhat-release
 ```
 
 ## Enabling systemd in SL7
@@ -98,7 +102,7 @@ In order to run a container with systemd, you will need to mount the cgroups vol
 
 ```Dockerfile
 # Example SL7 systemd Dockerfile
-FROM sl:7
+FROM amd64/sl:7
 ENV container docker
 ### This example enables httpd via systemd within the container
 RUN yum -y install httpd && yum clean all && systemctl enable httpd.service

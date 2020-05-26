@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `amd64` builds of [the `kong` official image](https://hub.docker.com/_/kong) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -42,6 +44,8 @@ WARNING:
 -	[`1.1.3-centos`, `1.1-centos`](https://github.com/Kong/docker-kong/blob/196331b1e6b4798032af4d6c218a441e2c8db74d/centos/Dockerfile)
 -	[`1.0.4-alpine`, `1.0.4`, `1.0`](https://github.com/Kong/docker-kong/blob/5a47f391b479e6660edab76813891326630bed0e/alpine/Dockerfile)
 -	[`1.0.4-centos`, `1.0-centos`](https://github.com/Kong/docker-kong/blob/5a47f391b479e6660edab76813891326630bed0e/centos/Dockerfile)
+
+[![amd64/kong build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/kong.svg?label=amd64/kong%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/kong/)
 
 # Quick reference (cont.)
 
@@ -110,7 +114,7 @@ $ docker run --rm \
     -e "KONG_DATABASE=postgres" \
     -e "KONG_PG_HOST=kong-database" \
     -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" \
-    kong kong migrations bootstrap
+    amd64/kong kong migrations bootstrap
 ```
 
 In the above example, both Cassandra and PostgreSQL are configured, but you should update the `KONG_DATABASE` environment variable with either `cassandra` or `postgres`.
@@ -136,7 +140,7 @@ $ docker run -d --name kong \
     -p 8443:8443 \
     -p 8001:8001 \
     -p 8444:8444 \
-    kong
+    amd64/kong
 ```
 
 If everything went well, and if you created your container with the default ports, Kong should be listening on your host's `8000` ([Proxy](https://docs.konghq.com/latest/configuration/#proxy_port)), `8443` ([Proxy SSL](https://docs.konghq.com/latest/configuration/#proxy_listen_ssl)), `8001` ([Admin API](https://docs.konghq.com/latest/configuration/#admin_listen)) and `8444` ([Admin API SSL](https://docs.konghq.com/latest/configuration/#admin_listen_ssl)) ports.
@@ -159,7 +163,7 @@ $ docker run -d --name kong \
     -p 8443:8443 \
     -p 8001:8001 \
     -p 8444:8444 \
-    kong
+    amd64/kong
 ```
 
 ## Reload Kong in a running container
@@ -185,13 +189,13 @@ Since version 1.x you can run Kong in a Service Mesh deployment as a platform-ag
 
 # Image Variants
 
-The `kong` images come in many flavors, each designed for a specific use case.
+The `amd64/kong` images come in many flavors, each designed for a specific use case.
 
-## `kong:<version>`
+## `amd64/kong:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `kong:<version>-alpine`
+## `amd64/kong:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
