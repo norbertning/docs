@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `mips64le` builds of [the `jobber` official image](https://hub.docker.com/_/jobber) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,7 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.4.0-alpine3.10`, `1.4-alpine3.10`, `1-alpine3.10`, `latest`](https://github.com/dshearer/jobber-docker/blob/64d2a0778ae73986cb90f1c374d9dfb42c9b8483/alpine3.10/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `mips64le` ARCHITECTURE
+
+[![mips64le/jobber build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/jobber.svg?label=mips64le/jobber%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/jobber/)
 
 # Quick reference (cont.)
 

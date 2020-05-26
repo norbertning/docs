@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `mips64le` builds of [the `bash` official image](https://hub.docker.com/_/bash) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,16 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`devel-20200518`, `devel`](https://github.com/tianon/docker-bash/blob/887f3d4d63f6c990c5ed743b43167f2c6c6dc4c7/devel/Dockerfile)
--	[`5.0.17`, `5.0`, `5`, `latest`](https://github.com/tianon/docker-bash/blob/bdb65fba59b806a9987f3b8e9d4522d5f4d49a92/5.0/Dockerfile)
--	[`4.4.23`, `4.4`, `4`](https://github.com/tianon/docker-bash/blob/f55ec52c6bb3a9a1b942a775f848002826b58b8a/4.4/Dockerfile)
--	[`4.3.48`, `4.3`](https://github.com/tianon/docker-bash/blob/f55ec52c6bb3a9a1b942a775f848002826b58b8a/4.3/Dockerfile)
--	[`4.2.53`, `4.2`](https://github.com/tianon/docker-bash/blob/f55ec52c6bb3a9a1b942a775f848002826b58b8a/4.2/Dockerfile)
--	[`4.1.17`, `4.1`](https://github.com/tianon/docker-bash/blob/f55ec52c6bb3a9a1b942a775f848002826b58b8a/4.1/Dockerfile)
--	[`4.0.44`, `4.0`](https://github.com/tianon/docker-bash/blob/f55ec52c6bb3a9a1b942a775f848002826b58b8a/4.0/Dockerfile)
--	[`3.2.57`, `3.2`, `3`](https://github.com/tianon/docker-bash/blob/f55ec52c6bb3a9a1b942a775f848002826b58b8a/3.2/Dockerfile)
--	[`3.1.23`, `3.1`](https://github.com/tianon/docker-bash/blob/f55ec52c6bb3a9a1b942a775f848002826b58b8a/3.1/Dockerfile)
--	[`3.0.22`, `3.0`](https://github.com/tianon/docker-bash/blob/f55ec52c6bb3a9a1b942a775f848002826b58b8a/3.0/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `mips64le` ARCHITECTURE
+
+[![mips64le/bash build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/bash.svg?label=mips64le/bash%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/bash/)
 
 # Quick reference (cont.)
 
@@ -77,7 +72,7 @@ There are a few main things that are important to note regarding this image:
 ## Interactive shell
 
 ```console
-$ docker run -it --rm bash:4.4
+$ docker run -it --rm mips64le/bash:4.4
 bash-4.4# which bash
 /usr/local/bin/bash
 bash-4.4# echo $BASH_VERSION
@@ -87,16 +82,16 @@ bash-4.4# echo $BASH_VERSION
 ## Testing scripts via bind-mount
 
 ```console
-$ docker run -it --rm -v /path/to/script.sh:/script.sh:ro bash:4.4 bash /script.sh
+$ docker run -it --rm -v /path/to/script.sh:/script.sh:ro mips64le/bash:4.4 bash /script.sh
 ...
-$ docker run -it --rm -v /path/to/script.sh:/script.sh:ro bash:3.2 bash /script.sh
+$ docker run -it --rm -v /path/to/script.sh:/script.sh:ro mips64le/bash:3.2 bash /script.sh
 ...
 ```
 
 ## Testing scripts via `Dockerfile`
 
 ```dockerfile
-FROM bash:4.4
+FROM mips64le/bash:4.4
 
 COPY script.sh /
 

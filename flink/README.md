@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `mips64le` builds of [the `flink` official image](https://hub.docker.com/_/flink) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,10 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.9.3-scala_2.11`, `1.9-scala_2.11`](https://github.com/apache/flink-docker/blob/379970e8d2a9e138d1291d83b47e7ea643421b3a/1.9/scala_2.11-debian/Dockerfile)
--	[`1.9.3-scala_2.12`, `1.9-scala_2.12`, `1.9.3`, `1.9`](https://github.com/apache/flink-docker/blob/379970e8d2a9e138d1291d83b47e7ea643421b3a/1.9/scala_2.12-debian/Dockerfile)
--	[`1.10.1-scala_2.11`, `1.10-scala_2.11`, `scala_2.11`](https://github.com/apache/flink-docker/blob/31794825ad02db8b0eb961372c74a309a4504bcd/1.10/scala_2.11-debian/Dockerfile)
--	[`1.10.1-scala_2.12`, `1.10-scala_2.12`, `scala_2.12`, `1.10.1`, `1.10`, `latest`](https://github.com/apache/flink-docker/blob/31794825ad02db8b0eb961372c74a309a4504bcd/1.10/scala_2.12-debian/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `mips64le` ARCHITECTURE
+
+[![mips64le/flink build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/flink.svg?label=mips64le/flink%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/flink/)
 
 # Quick reference (cont.)
 
@@ -69,13 +70,13 @@ Starting with Flink 1.5, images without "hadoop" in the tag are the "Hadoop-free
 You can run a JobManager (master).
 
 ```console
-$ docker run --name flink_jobmanager -d -t flink jobmanager
+$ docker run --name flink_jobmanager -d -t mips64le/flink jobmanager
 ```
 
 You can also run a TaskManager (worker). Notice that workers need to register with the JobManager directly or via ZooKeeper so the master starts to send them tasks to execute.
 
 ```console
-$ docker run --name flink_taskmanager -d -t flink taskmanager
+$ docker run --name flink_taskmanager -d -t mips64le/flink taskmanager
 ```
 
 ## Running a cluster using Docker Compose
