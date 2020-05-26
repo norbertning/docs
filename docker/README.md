@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `arm32v7` builds of [the `docker` official image](https://hub.docker.com/_/docker) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -26,8 +28,9 @@ WARNING:
 
 -	[`19.03.9`, `19.03`, `19`, `stable`, `test`, `latest`](https://github.com/docker-library/docker/blob/cdd23554f9417055ca2a18805fa9ad5716209934/19.03/Dockerfile)
 -	[`19.03.9-dind`, `19.03-dind`, `19-dind`, `stable-dind`, `test-dind`, `dind`](https://github.com/docker-library/docker/blob/a73d96e731e2dd5d6822c99a9af4dcbfbbedb2be/19.03/dind/Dockerfile)
--	[`19.03.9-dind-rootless`, `19.03-dind-rootless`, `19-dind-rootless`, `stable-dind-rootless`, `test-dind-rootless`, `dind-rootless`](https://github.com/docker-library/docker/blob/25c81c65fe4e971ff75e67df38e8b9970b523f6e/19.03/dind-rootless/Dockerfile)
 -	[`19.03.9-git`, `19.03-git`, `19-git`, `stable-git`, `test-git`, `git`](https://github.com/docker-library/docker/blob/7a67842e7ff12c1426ae6a67ac1b7a701b51f3df/19.03/git/Dockerfile)
+
+[![arm32v7/docker build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/docker.svg?label=arm32v7/docker%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/docker/)
 
 # Quick reference (cont.)
 
@@ -92,7 +95,7 @@ $ docker run --privileged --name some-docker -d \
 	-e DOCKER_TLS_CERTDIR=/certs \
 	-v some-docker-certs-ca:/certs/ca \
 	-v some-docker-certs-client:/certs/client \
-	docker:dind
+	arm32v7/docker:dind
 ```
 
 **Note:** `--privileged` is required for Docker-in-Docker to function properly, but it should be used with care as it provides full access to the host environment, as explained [in the relevant section of the Docker documentation](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities).
@@ -103,7 +106,7 @@ $ docker run --privileged --name some-docker -d \
 $ docker run --rm --network some-network \
 	-e DOCKER_TLS_CERTDIR=/certs \
 	-v some-docker-certs-client:/certs/client:ro \
-	docker:latest version
+	arm32v7/docker:latest version
 Client: Docker Engine - Community
  Version:           18.09.8
  API version:       1.39
@@ -128,7 +131,7 @@ Server: Docker Engine - Community
 $ docker run -it --rm --network some-network \
 	-e DOCKER_TLS_CERTDIR=/certs \
 	-v some-docker-certs-client:/certs/client:ro \
-	docker:latest sh
+	arm32v7/docker:latest sh
 / # docker version
 Client: Docker Engine - Community
  Version:           18.09.8
@@ -154,7 +157,7 @@ Server: Docker Engine - Community
 $ docker run --rm --network some-network \
 	-e DOCKER_TLS_CERTDIR=/certs \
 	-v some-docker-certs-client:/certs/client:ro \
-	docker:latest info
+	arm32v7/docker:latest info
 Containers: 0
  Running: 0
  Paused: 0
@@ -206,7 +209,7 @@ WARNING: bridge-nf-call-ip6tables is disabled
 ```
 
 ```console
-$ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docker:latest version
+$ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock arm32v7/docker:latest version
 Client: Docker Engine - Community
  Version:           18.09.8
  API version:       1.39
@@ -235,7 +238,7 @@ $ docker run --privileged --name some-docker -d \
 	-e DOCKER_TLS_CERTDIR=/certs \
 	-v some-docker-certs-ca:/certs/ca \
 	-v some-docker-certs-client:/certs/client \
-	docker:dind --storage-driver overlay2
+	arm32v7/docker:dind --storage-driver overlay2
 ```
 
 ## Rootless
@@ -255,7 +258,7 @@ The Docker documentation is a good starting point for understanding the differen
 2.	Start your `docker` container like this:
 
 	```console
-	$ docker run --privileged --name some-docker -v /my/own/var-lib-docker:/var/lib/docker -d docker:dind
+	$ docker run --privileged --name some-docker -v /my/own/var-lib-docker:/var/lib/docker -d arm32v7/docker:dind
 	```
 
 The `-v /my/own/var-lib-docker:/var/lib/docker` part of the command mounts the `/my/own/var-lib-docker` directory from the underlying host system as `/var/lib/docker` inside the container, where Docker by default will write its data files.

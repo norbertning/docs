@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `arm32v7` builds of [the `crate` official image](https://hub.docker.com/_/crate) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,9 +26,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`4.1.5`, `4.1`, `latest`](https://github.com/crate/docker-crate/blob/1d2060119c573f07b861f808c0aa89331fa80cd5/Dockerfile)
--	[`4.0.12`, `4.0`](https://github.com/crate/docker-crate/blob/7791cda08fbf054ab2ce7a988f8811074b8c3bf4/Dockerfile)
--	[`3.3.5`, `3.3`](https://github.com/crate/docker-crate/blob/f5c527fb12df004e3fc620fd9d91b97686f56ef8/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v7` ARCHITECTURE
+
+[![arm32v7/crate build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/crate.svg?label=arm32v7/crate%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/crate/)
 
 # Quick reference (cont.)
 
@@ -69,7 +71,7 @@ The smallest CrateDB clusters can easily ingest tens of thousands of records per
 Spin up this Docker image like so:
 
 ```console
-$ docker run -p 4200:4200 crate
+$ docker run -p 4200:4200 arm32v7/crate
 ```
 
 Once you're up and running, head on over to [the introductory docs](https://crate.io/docs/crate/getting-started/en/latest/first-use/index.html).

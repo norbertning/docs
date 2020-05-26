@@ -14,6 +14,8 @@ WARNING:
 
 -->
 
+**Note:** this is the "per-architecture" repository for the `arm32v7` builds of [the `ubuntu` official image](https://hub.docker.com/_/ubuntu) -- for more information, see ["Architectures other than amd64?" in the official images documentation](https://github.com/docker-library/official-images#architectures-other-than-amd64) and ["An image's source changed in Git, now what?" in the official images FAQ](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+
 # Quick reference
 
 -	**Maintained by**:  
@@ -24,12 +26,14 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`18.04`, `bionic-20200403`, `bionic`](https://github.com/tianon/docker-brew-ubuntu-core/blob/451851eab04432157249eb444d5a42714e2a7112/bionic/Dockerfile)
--	[`19.10`, `eoan-20200410`, `eoan`](https://github.com/tianon/docker-brew-ubuntu-core/blob/451851eab04432157249eb444d5a42714e2a7112/eoan/Dockerfile)
--	[`20.04`, `focal-20200423`, `focal`, `latest`, `rolling`](https://github.com/tianon/docker-brew-ubuntu-core/blob/451851eab04432157249eb444d5a42714e2a7112/focal/Dockerfile)
--	[`20.10`, `groovy-20200505`, `groovy`, `devel`](https://github.com/tianon/docker-brew-ubuntu-core/blob/451851eab04432157249eb444d5a42714e2a7112/groovy/Dockerfile)
--	[`14.04`, `trusty-20191217`, `trusty`](https://github.com/tianon/docker-brew-ubuntu-core/blob/451851eab04432157249eb444d5a42714e2a7112/trusty/Dockerfile)
--	[`16.04`, `xenial-20200326`, `xenial`](https://github.com/tianon/docker-brew-ubuntu-core/blob/451851eab04432157249eb444d5a42714e2a7112/xenial/Dockerfile)
+-	[`18.04`, `bionic-20200403`, `bionic`](https://github.com/tianon/docker-brew-ubuntu-core/blob/2723aa361f2fc9955ea4933ce2d6c0b0ac6f6c42/bionic/Dockerfile)
+-	[`19.10`, `eoan-20200410`, `eoan`](https://github.com/tianon/docker-brew-ubuntu-core/blob/2723aa361f2fc9955ea4933ce2d6c0b0ac6f6c42/eoan/Dockerfile)
+-	[`20.04`, `focal-20200423`, `focal`, `latest`, `rolling`](https://github.com/tianon/docker-brew-ubuntu-core/blob/2723aa361f2fc9955ea4933ce2d6c0b0ac6f6c42/focal/Dockerfile)
+-	[`20.10`, `groovy-20200505`, `groovy`, `devel`](https://github.com/tianon/docker-brew-ubuntu-core/blob/2723aa361f2fc9955ea4933ce2d6c0b0ac6f6c42/groovy/Dockerfile)
+-	[`14.04`, `trusty-20191217`, `trusty`](https://github.com/tianon/docker-brew-ubuntu-core/blob/2723aa361f2fc9955ea4933ce2d6c0b0ac6f6c42/trusty/Dockerfile)
+-	[`16.04`, `xenial-20200326`, `xenial`](https://github.com/tianon/docker-brew-ubuntu-core/blob/2723aa361f2fc9955ea4933ce2d6c0b0ac6f6c42/xenial/Dockerfile)
+
+[![arm32v7/ubuntu build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/ubuntu.svg?label=arm32v7/ubuntu%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/ubuntu/)
 
 # Quick reference (cont.)
 
@@ -64,9 +68,9 @@ Development of Ubuntu is led by Canonical Ltd. Canonical generates revenue throu
 
 This image is built from official rootfs tarballs provided by Canonical (specifically, https://partner-images.canonical.com/core/).
 
-The `ubuntu:latest` tag points to the "latest LTS", since that's the version recommended for general use. The `ubuntu:rolling` tag points to the latest release (regardless of LTS status).
+The `arm32v7/ubuntu:latest` tag points to the "latest LTS", since that's the version recommended for general use. The `arm32v7/ubuntu:rolling` tag points to the latest release (regardless of LTS status).
 
-Along a similar vein, the `ubuntu:devel` tag is an alias for whichever release the "devel" suite on the mirrors currently points to, as determined by the following one-liner: `wget -qO- http://archive.ubuntu.com/ubuntu/dists/devel/Release | awk -F ': ' '$1 == "Codename" { print $2; exit }'`
+Along a similar vein, the `arm32v7/ubuntu:devel` tag is an alias for whichever release the "devel" suite on the mirrors currently points to, as determined by the following one-liner: `wget -qO- http://archive.ubuntu.com/ubuntu/dists/devel/Release | awk -F ': ' '$1 == "Codename" { print $2; exit }'`
 
 ## Locales
 
